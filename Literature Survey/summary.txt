@@ -1,0 +1,53 @@
+This text file provides a summary of the papers in this folder.
+
+"Automatic Classification of UML Class Diagrams Using Deep Learning Technique: Convolutional Neural Network":
+The authors of this paper developed a novel Convolutional Neural Network (CNN) to perform a binary classification
+of images - UML diagrams and non-UML diagrams. 
+The dataset used by the authors consisted of a total of 3298 images of which 1649 images were UML diagrams and
+the other 1694 were non-UML diagrams.
+The CNN architecture is as follows:
+    For CNN without regularization, four convolutional layers and four pooling layers were used. 
+    Data augmentation was used to avoid overﬁtting. Two activation functions ,ReLU and Sigmoid, were used. 
+    ReLU wass used in the inner layers of CNN and Sigmoid was used in the output layer of CNN. 
+    Adaptive momentum estimation (Adam) was used for optimization and Max-pooling is used in the pooling layer.
+
+    For CNN with regularization, ﬁve CNN layers and ﬁve pooling layers were used. ReLU and Sigmoid activation functions were used. 
+    Adam Optimizer, Max-pooling, and L2 regularization with different weight functions were used for the evaluation. 
+
+
+
+"Natural Sketch Recognition in UML Class Diagrams"
+The author developed a system that enhances UML free-hand class diagrams and creates a neat digital version.
+The system can recognize general classes, interface classes, dependency associations, inheritance associations
+and aggregation associations.
+The system uses stroke information to predict the various notations of the UML class diagram.
+1. Classes: A general class can be drawn with one to four strokes; A collection of strokes is classifiable as a general class if 
+the majority of the points fall between the bounding box of the strokes and a slightly smaller internal bounding box.
+2. Associations: To recognize an arrow, the recognizer first attempts to locate the head and tail of the arrow by finding the points 
+furthest from each other. The head is defined to be the stoke endpoint closest to the other line segments.
+The algorithm then locates the arrowhead’s side points by finding the points furthest from the head-tail line, and lying on 
+either side of this line. The line segments are then examined to determine where they fall to determine the association type.
+
+Shortcomings:
+1. The system can recognize only the outlines of the UML class diagram. The author hasn't provided information on the
+efficacy of her approach.
+2. The system isn't capable of recognizing the text within the class diagram shapes.
+3. The system only uses a fixed stroke behavior for understanding the UML class diagram.
+
+
+"Tahuti"
+The author of the previous paper introduces an optimized version of her system. The system is now able to
+recognize aggregations and dependency associations. The process for identifying these associations is as follows:
+1. Locate the arrow shaft by locating the two points furthest from each other (points A and B).
+2. Locate the arrow head ends by locating points furthest from arrow shaft on either side (points C and D).
+3. Let point E be the point on line AB that is twice the distance from B as the intersection point of lines CD
+and AB.
+4. Classify each of the line segments as part of the arrow shaft, an arrow head section, or unclassified (AB, BC,
+BD, CD, CE, DE, or unclassified) based on the line’s bounding box, slope, and y-intercept.
+5. Based on the results of the line-segment classification, classify the arrow type as dependency, inheritance,
+aggregation, or leave the strokes unclassified.
+
+
+
+
+
