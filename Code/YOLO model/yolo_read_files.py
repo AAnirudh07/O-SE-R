@@ -10,8 +10,8 @@ layer_names = net.getLayerNames()
 output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
 # Loading image
-img = cv2.imread("D:/Projects/O-SE-R/Dataset/images-with-annotations/IMG_20210628_155542.jpg")
-img = cv2.resize(img, (1280,720))
+img = cv2.imread("D:/Projects/O-SE-R/Dataset/images-with-annotations/classes8image2.jpeg")
+#img = cv2.resize(img, (1280,720))
 #img = cv2.resize(img, None, fx=0.4, fy=0.4)
 height, width, channels = img.shape
 
@@ -45,7 +45,7 @@ for out in outs:
         confidences.append(float(confidence))
         class_ids.append(class_id)
 
-indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.2, 0.6)
+indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.2, 0.5)
 font = cv2.FONT_HERSHEY_PLAIN
 for i in range(len(boxes)):
     if i in indexes:
@@ -56,6 +56,7 @@ for i in range(len(boxes)):
         cv2.putText(img, label, (x, y + 30), font, 3, color, 3)
 
 
+img = cv2.resize(img, (1280,720))
 cv2.imshow("Image", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

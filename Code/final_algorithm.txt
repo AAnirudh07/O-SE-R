@@ -1,0 +1,42 @@
+algorithm 1: convertUMLSketchToCode(image, height_of_image, width_of_image)
+    Inputs:
+        1. image - An RGB image
+        2. height_of_image: Height of the RGB image
+        3. width_of_image: Width of the RGB image
+    
+    Outputs:
+        1. codeSkeleton - returns a code skeleton of the UML class diagram
+
+    1. Pass the input image to YOLO_SE1 and obtain the bounding boxes.
+    
+    2. Pass the resulting bounding boxes to the NMS thresholding algorithm to remove overlapping boxes.
+    
+    3. Obtain a new image, img_1, by masking the bounding boxes from the original image. Store the center points of those boxes.
+    
+    4. In the new image, classify the lines as follows:
+        i. If the line is too small to be of any use, classify it as not important (NIMP)
+        ii. If the line is a single straight line, then classify it as an association (ASSC)
+        iii. If one of the endpoints of the line is close to an inheritance symbol, then classify it as a inheritance (INH)
+    
+    5. For each of these classified line segments:
+        i. If the line segment is NIMP, continue
+        ii. If the line segment is ASSC, then obtain the classes C1 and C2 that are closest to the two endpoints of the line.
+            Store this information.
+        iii. If the line segment is INH, then 
+            Store the classes C1,C2...,Cn such that C1 is the base class (class closest to the inheritance symbol) and classes
+            C2..Cn are the child classes.
+    
+    6. Initialize codeSkeleton
+
+    7. Pass each of the UML classses to an OCR tool capable of recognizing documents.
+
+    8. In codeSkeleton add the following:
+        i. Add the first line as the name of the class.
+        ii. Add the subsequent lines as the attributes.
+    
+    9. For each of the line segments do the following:
+        i. If the line segment is an association, add an attirbute in both classes of the form 'class_name var[]'.
+        ii. If the line segment is of type inheritance, add 'extends base_class' to the class name of all the inherited classes.
+    
+    Return codeSkeleton
+    

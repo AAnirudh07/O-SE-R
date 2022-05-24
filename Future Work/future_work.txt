@@ -1,0 +1,5 @@
+In the second version of O-SE-R, we plan to add the following:
+
+1. Create a novel dataset with UML classes, attributes, stereotypes, methods, aggregations, compositions, inheritance.
+2. Create an object localization code capable of recognizing aggregations,compositions, stereotypes and methods.
+3. Create a method to identify the numbers on top of the associations.
