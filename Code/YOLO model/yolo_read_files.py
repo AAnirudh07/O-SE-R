@@ -59,4 +59,9 @@ for i in range(len(boxes)):
 img = cv2.resize(img, (1280,720))
 cv2.imshow("Image", img)
 cv2.waitKey(0)
+
+#mask the bounding boxes
+
+
+
 cv2.destroyAllWindows()
