@@ -29,7 +29,7 @@ ap.add_argument("-i", "--image", required=True,help="path to input image to be O
 args = vars(ap.parse_args())
 
 image = cv2.imread(args["image"], cv2.IMREAD_GRAYSCALE)
-image = cv2.resize(image,(1280,720))
+#image = cv2.resize(image,(1280,720))
 image = preprocess(image)
 
 # use Tesseract to OCR the image
