@@ -1,6 +1,10 @@
 import cv2
 import pytesseract
 import argparse
+import img_resize
+import numpy as np
+
+kernel = np.ones((5,5), np.uint8)
 
 def preprocess(image, target=30):
     '''
@@ -30,8 +34,10 @@ args = vars(ap.parse_args())
 
 image = cv2.imread(args["image"], cv2.IMREAD_GRAYSCALE)
 #image = cv2.resize(image,(1280,720))
-image = preprocess(image)
+image = img_resize.image_resize(image,height=720)
 
+image = preprocess(image)
+image = cv2.erode(image, kernel, iterations=1)
 # use Tesseract to OCR the image
 print("Tesseract Loaded!")
 text = pytesseract.image_to_string(image)
