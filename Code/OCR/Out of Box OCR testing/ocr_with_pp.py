@@ -37,7 +37,7 @@ image = cv2.imread(args["image"], cv2.IMREAD_GRAYSCALE)
 image = img_resize.image_resize(image,height=720)
 
 image = preprocess(image)
-image = cv2.erode(image, kernel, iterations=1)
+
 # use Tesseract to OCR the image
 print("Tesseract Loaded!")
 text = pytesseract.image_to_string(image)
