@@ -29,10 +29,8 @@ algorithm 1: convertUMLSketchToCode(image, height_of_image, width_of_image)
     6. Initialize codeSkeleton
 
     7. Convert the writing to text.
-        i. Remove the box boundary. 
-        ii. Increase the contrast of the image.
-        iii. Enlarge the image with the same width to height ratio. 
-        iv. Pass the UML class with the box removed to an OCR tool capable of recognizing text.
+        i.  Segment the image into lines.
+        ii. Pass each line to an OCR to to obtain the text. 
 
     8. In codeSkeleton add the following:
         i. Add the first line as the name of the class.
