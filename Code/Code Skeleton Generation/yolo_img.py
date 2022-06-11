@@ -51,4 +51,4 @@ def yolo_ret():
     img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     ret, img = cv2.threshold(img, 180, 255, cv2.THRESH_BINARY_INV)
 
-    return (img,boxes,indexes)
+    return (img,boxes,indexes,class_ids)

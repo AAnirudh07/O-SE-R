@@ -13,7 +13,6 @@ algorithm 1: convertUMLSketchToCode(image, height_of_image, width_of_image)
     
     3. Obtain a new image, img_1, by masking the bounding boxes from the original image. Store the center points of those boxes.
     
-
     4. Group the lines in img_1 using contours. 
 
     5. Find the endpoints of each line group. 

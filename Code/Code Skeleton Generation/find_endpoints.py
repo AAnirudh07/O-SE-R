@@ -21,7 +21,9 @@ def find_endpoints(img):
 
 
 if __name__ == "__main__":
-    (img,boxes,indexes) = yolo_img.yolo_ret()
-    mask = maskbb.mask_it(img,boxes,indexes)
+    with open("D:/Projects/O-SE-R/Dataset/images/classes.txt", "r") as f:
+        class_names = [line.strip() for line in f.readlines()]
+    (img,boxes,indexes,class_ids) = yolo_img.yolo_ret()
+    (classes,inh,mask) = maskbb.mask_it(img,boxes,indexes,class_names,class_ids)
     endpoints = find_endpoints(mask)
     print(endpoints)
