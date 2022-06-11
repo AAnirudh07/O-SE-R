@@ -11,7 +11,7 @@ def yolo_ret():
     output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
     colors = np.random.uniform(0, 255, size=(len(classes), 3))
     # Loading image
-    img = cv2.imread("D:/Projects/O-SE-R/Dataset/images-with-annotations/IMG_20210624_173209.jpg")
+    img = cv2.imread("D:/Projects/O-SE-R/Dataset/images-with-annotations/Document 6_9.jpg")
     #img = cv2.resize(img, (1280,720))
     #img = cv2.resize(img, None, fx=0.4, fy=0.4)
     height, width, channels = img.shape
@@ -49,6 +49,6 @@ def yolo_ret():
     indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.2, 0.5)
     font = cv2.FONT_HERSHEY_PLAIN
     img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-    ret, img = cv2.threshold(img, 150, 255, cv2.THRESH_BINARY_INV)
+    ret, img = cv2.threshold(img, 200, 255, cv2.THRESH_BINARY_INV)
 
     return (img,boxes,indexes)
