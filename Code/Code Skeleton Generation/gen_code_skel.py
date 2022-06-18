@@ -16,7 +16,7 @@ endpoints_per_group = []
 endpoints_assc = []
 
 
-def find_nearest_class(inh, classes):
+def find_nearest(inh, classes):
     for inh_point in inh:
         nearest_distance = float('inf')
         class_no = 0
@@ -28,22 +28,14 @@ def find_nearest_class(inh, classes):
 
 
 
-def find_nearest(point, classes, inh):
+def find_nearest_class(point, found, classes):
     nearest_distance = float('inf')
     type = ""
     for class_point in range(len(classes)):
-        print(np.linalg.norm(np.array(classes[class_point])-np.array(point)))
-        if np.linalg.norm(np.array(classes[class_point])-np.array(point)) < nearest_distance:
+        if np.linalg.norm(np.array(classes[class_point])-np.array(point)) < nearest_distance and class_point not in found:
             nearest_distance = np.linalg.norm(np.array(classes[class_point])-np.array(point))
             type = ("class",class_point)
-
-    for inh_point in range(len(inh)):
-        if np.linalg.norm(np.array(inh[inh_point])-np.array(point)) < nearest_distance:
-            nearest_distance = np.linalg.norm(np.array(inh[inh_point])-np.array(point))
-            type = ("inheritance",inh_point)
-
     return type
-
 
 #main() function
 with open("D:/Projects/O-SE-R/Dataset/images/classes.txt", "r") as f:
@@ -53,8 +45,26 @@ with open("D:/Projects/O-SE-R/Dataset/images/classes.txt", "r") as f:
 (classes,inh,mask) = maskbb.mask_it(img,boxes,indexes,class_names,class_ids)
 (contour_img,rectangles) = get_class_inh_asc.find_contours(mask)
 
-find_nearest_class(inh,classes)
-print(classes)
+find_nearest(inh,classes)
+print(classes,inh)
+cv2.imshow("mask",mask)
+cv2.waitKey()
 
 for rectangle in rectangles:
-    endpoints_per_group.append(find_endpoints.find_endpoints(mask[rectangle[1]:rectangle[3],rectangle[0]:rectangle[2]]))
+    mask_1 = np.zeros(img.shape, dtype=np.uint8)
+    mask_1[rectangle[1]:rectangle[3],rectangle[0]:rectangle[2]] = mask[rectangle[1]:rectangle[3],rectangle[0]:rectangle[2]]
+    endpoints_per_group.append(find_endpoints.find_endpoints(mask_1))
+
+for endpoints in endpoints_per_group: 
+    inh_flag = FALSE
+    curr_group_assc = []
+    found_points = []
+
+    for point in endpoints:
+        print(point)
+        near = find_nearest_class(point, found_points, classes)
+        found_points.append(near[1])
+        curr_group_assc.append(near)
+    endpoints_assc.append(curr_group_assc)
+
+print(endpoints_assc)
