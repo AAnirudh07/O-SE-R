@@ -21,22 +21,25 @@ def find_nearest_class(inh, classes):
         nearest_distance = float('inf')
         class_no = 0
         for class_point in range(len(classes)):
-            if math.dist(classes[class_point],inh_point) < nearest_distance:
+            if np.linalg.norm(np.array(classes[class_point])-np.array(inh_point)) < nearest_distance:
                 class_no = class_point
-                nearest_distance = math.dist(classes[class_point],inh_point)
+                nearest_distance = np.linalg.norm(np.array(classes[class_point])-np.array(inh_point))
         inh_point_class.append(class_no)
+
+
 
 def find_nearest(point, classes, inh):
     nearest_distance = float('inf')
     type = ""
     for class_point in range(len(classes)):
-        if math.dist(classes[class_point],point) < nearest_distance:
-            nearest_distance = math.dist(classes[class_point],point)
+        print(np.linalg.norm(np.array(classes[class_point])-np.array(point)))
+        if np.linalg.norm(np.array(classes[class_point])-np.array(point)) < nearest_distance:
+            nearest_distance = np.linalg.norm(np.array(classes[class_point])-np.array(point))
             type = ("class",class_point)
 
     for inh_point in range(len(inh)):
-        if math.dist(inh[inh_point],point) < nearest_distance:
-            nearest_distance = math.dist(inh[inh_point],point)
+        if np.linalg.norm(np.array(inh[inh_point])-np.array(point)) < nearest_distance:
+            nearest_distance = np.linalg.norm(np.array(inh[inh_point])-np.array(point))
             type = ("inheritance",inh_point)
 
     return type
@@ -50,11 +53,8 @@ with open("D:/Projects/O-SE-R/Dataset/images/classes.txt", "r") as f:
 (classes,inh,mask) = maskbb.mask_it(img,boxes,indexes,class_names,class_ids)
 (contour_img,rectangles) = get_class_inh_asc.find_contours(mask)
 
+find_nearest_class(inh,classes)
+print(classes)
+
 for rectangle in rectangles:
     endpoints_per_group.append(find_endpoints.find_endpoints(mask[rectangle[1]:rectangle[3],rectangle[0]:rectangle[2]]))
-
-for endpoints in endpoints_per_group: 
-    inh_flag = FALSE
-    curr_group_assc = []
-    for point in endpoints:
-        curr_group_assc.append()
