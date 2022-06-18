@@ -17,6 +17,8 @@ def find_contours(img):
             cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 3)
     img = cv2.resize(img,(1280,720))
     return (img,rect_ret)
+
+    
 if __name__ == "__main__":
     with open("D:/Projects/O-SE-R/Dataset/images/classes.txt", "r") as f:
         class_names = [line.strip() for line in f.readlines()]
