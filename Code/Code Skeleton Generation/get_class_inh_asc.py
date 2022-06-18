@@ -13,12 +13,12 @@ def find_contours(img):
         if cv2.contourArea(cnt) > 1000 and cv2.contourArea(cnt) < 40000: 
             x, y, w, h = cv2.boundingRect(cnt)
             rect_ret.append([x,y,x+w,y+h])
-            print(x,y)
+            print(x,y,w,h)
             cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 3)
     img = cv2.resize(img,(1280,720))
     return (img,rect_ret)
 
-    
+
 if __name__ == "__main__":
     with open("D:/Projects/O-SE-R/Dataset/images/classes.txt", "r") as f:
         class_names = [line.strip() for line in f.readlines()]
@@ -29,5 +29,4 @@ if __name__ == "__main__":
     (contour_img,rectangles) = find_contours(mask)
     cv2.imshow("Contours",contour_img)
     cv2.waitKey()
-    for rectangle in rectangles:
-        pass
+    print(rectangles)

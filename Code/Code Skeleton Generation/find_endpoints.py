@@ -8,7 +8,7 @@ def find_endpoints(img):
     kernel = np.ones((3,3), np.uint8)
     img_erosion = cv2.erode(img, kernel, iterations=1)
     img_dilation = cv2.dilate(img_erosion, kernel, iterations=3)
-    corners = cv2.goodFeaturesToTrack(img, 7, 0.7, width/8)
+    corners = cv2.goodFeaturesToTrack(img, 7, 0.7, width/3)
     for corner in corners:
         x, y = corner.ravel()
         cv2.circle(img, (x,y), 7, (255,255,0), -1)
