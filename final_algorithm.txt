@@ -17,7 +17,7 @@ algorithm 1: convertUMLSketchToCode(image, height_of_image, width_of_image)
 
     5. Find the endpoints of each line group. 
     
-    6. For each endpoint in the line segment group, find the nearest class/inheritance symbol.
+    6. For each endpoint in the line segment group, find the nearest class.
 
     7. Classify the line group as follows:
         i. If the line has more than two endpoints and at least one endpoint associated with an inheritance symbol, 
