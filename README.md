@@ -5,7 +5,7 @@ Dataset Link: https://www.kaggle.com/datasets/leticiapiucco/handwritten-uml-clas
 
 
 
-Results:
+Test Set Results:
 
 
       Total Number of Classes: 274
