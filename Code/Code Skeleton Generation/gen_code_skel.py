@@ -63,8 +63,11 @@ for endpoints in endpoints_per_group:
     for point in endpoints:
         print(point)
         near = find_nearest_class(point, found_points, classes)
-        found_points.append(near[1])
-        curr_group_assc.append(near)
+        if len(near) > 1:
+            found_points.append(near[1])
+            curr_group_assc.append(near)
     endpoints_assc.append(curr_group_assc)
 
+print()
 print(endpoints_assc)
+print(inh_point_class)

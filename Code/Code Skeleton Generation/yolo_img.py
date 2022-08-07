@@ -11,7 +11,7 @@ def yolo_ret():
     output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
     colors = np.random.uniform(0, 255, size=(len(classes), 3))
     # Loading image
-    img = cv2.imread("D:/Projects/O-SE-R/Dataset/images-with-annotations/Document 6_1.jpg")
+    img = cv2.imread("D:/Projects/O-SE-R/Dataset/images/70.jpg")
     #img = cv2.resize(img, (1280,720))
     #img = cv2.resize(img, None, fx=0.4, fy=0.4)
     height, width, channels = img.shape
