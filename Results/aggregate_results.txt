@@ -13,5 +13,3 @@ Number of Associations Identified: 64
 Total Number of Generalizations: 50
 Number of Generalizations Identified: 18
 % of Generalizations Identified: 36%
-
-
