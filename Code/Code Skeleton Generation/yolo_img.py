@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import sys
 
 def yolo_ret():
     # Load Yolo
@@ -8,7 +9,10 @@ def yolo_ret():
     with open("D:/Projects/O-SE-R/Dataset/images/classes.txt", "r") as f:
         classes = [line.strip() for line in f.readlines()]
     layer_names = net.getLayerNames()
-    output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+    if sys.version_info >= (3, 9):
+        output_layers = [layer_names[i- 1] for i in net.getUnconnectedOutLayers()]
+    else:
+        output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
     colors = np.random.uniform(0, 255, size=(len(classes), 3))
     # Loading image
     img = cv2.imread("D:/Projects/O-SE-R/Dataset/images/70.jpg")
@@ -36,6 +40,7 @@ def yolo_ret():
             center_x = int(detection[0] * width)
             center_y = int(detection[1] * height)
             w = int(detection[2] * width)
+            print(detection[3] * height)
             h = int(detection[3] * height)
 
             # Rectangle coordinates

@@ -1,2 +1,4 @@
 .vscode
 yolov3_custom_final.weights
+venv
+*.pyc
