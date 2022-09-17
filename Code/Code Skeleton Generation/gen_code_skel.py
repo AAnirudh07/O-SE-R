@@ -47,7 +47,6 @@ with open("D:/Projects/O-SE-R/Dataset/images/classes.txt", "r") as f:
 
 find_nearest(inh,classes)
 print(classes,inh)
-cv2.imshow("mask",mask)
 cv2.waitKey()
 
 for rectangle in rectangles:

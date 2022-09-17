@@ -40,7 +40,6 @@ def yolo_ret():
             center_x = int(detection[0] * width)
             center_y = int(detection[1] * height)
             w = int(detection[2] * width)
-            print(detection[3] * height)
             h = int(detection[3] * height)
 
             # Rectangle coordinates
