@@ -1,11 +1,21 @@
 # O-SE-R
-This repository contains the implementation details for the OCR tool built to convert UML sketches to a code skeleton using Computer Vision and Image Processing.
+This repository contains the implementation details for the OCR tool built to convert UML sketches to a code skeleton using Image Processing.
 
-Dataset Link: https://www.kaggle.com/datasets/leticiapiucco/handwritten-uml-class-diagrams
+### How to use O-SE-R
+
+#### Prerequisites
+- opencv: 4.6.0.66
+- numpy: 1.23.2
+- Download the custom YOLO weight file here: https://drive.google.com/drive/folders/1Bp7WFeSSX3HlyC1KIU4BPRpBHqo5AbLq?usp=sharing
+
+#### Run O-SE-R
+- Detect the UML classes and inheritance symbols: `yolo_img.py`
+- Generate code skeleton: `gen_code_skel.py`
 
 
 
-Test Set Results:
+
+## Test Set Results:
 
 
       Total Number of Classes: 274
@@ -24,14 +34,6 @@ Test Set Results:
       Number of Generalizations Identified: 18
       % of Generalizations Identified: 36%
 
+## Dataset Link: https://www.kaggle.com/datasets/leticiapiucco/handwritten-uml-class-diagrams
 
-### How to use O-SE-R
 
-#### Prerequisites
-- opencv: 4.6.0.66
-- numpy: 1.23.2
-- Download the custom YOLO weight file here: https://drive.google.com/drive/folders/1Bp7WFeSSX3HlyC1KIU4BPRpBHqo5AbLq?usp=sharing
-
-#### Run O-SE-R
-- Detect the UML classes and inheritance symbols: `yolo_img.py`
-- Generate code skeleton: `gen_code_skel.py`
