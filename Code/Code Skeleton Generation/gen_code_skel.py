@@ -66,7 +66,8 @@ for endpoints in endpoints_per_group:
             found_points.append(near[1])
             curr_group_assc.append(near)
     endpoints_assc.append(curr_group_assc)
-
+    
+unique_data = [list(x) for x in set(tuple(x) for x in endpoints_assc)]
 print()
-print(endpoints_assc)
+print(unique_data)
 print(inh_point_class)
