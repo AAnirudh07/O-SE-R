@@ -34,6 +34,9 @@ This repository contains the implementation details for the OCR tool built to co
       Number of Generalizations Identified: 18
       % of Generalizations Identified: 36%
 
-## Dataset Link: https://www.kaggle.com/datasets/leticiapiucco/handwritten-uml-class-diagrams
+## Dataset
+An open-source dataset was annotated to the train the YOLO model on UML classes and inheritance symbols.
+
+Original dataset link:  https://www.kaggle.com/datasets/leticiapiucco/handwritten-uml-class-diagrams
 
 
