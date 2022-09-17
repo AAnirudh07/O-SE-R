@@ -25,3 +25,13 @@ Test Set Results:
       % of Generalizations Identified: 36%
 
 
+### How to use O-SE-R
+
+#### Prerequisites
+- opencv: 4.6.0.66
+- numpy: 1.23.2
+- Download the custom YOLO weight file here: https://drive.google.com/drive/folders/1Bp7WFeSSX3HlyC1KIU4BPRpBHqo5AbLq?usp=sharing
+
+#### Run O-SE-R
+- Detect the UML classes and inheritance symbols: `yolo_img.py`
+- Generate code skeleton: `gen_code_skel.py`
