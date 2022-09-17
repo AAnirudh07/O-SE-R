@@ -11,7 +11,7 @@ def find_endpoints(img):
     corners = cv2.goodFeaturesToTrack(img, 7, 0.7, width/8)
     for corner in corners:
         x, y = corner.ravel()
-        cv2.circle(img, (x,y), 7, (255,255,0), -1)
+        cv2.circle(img, (int(x),int(y)), 7, (255,255,0), -1)
     img = cv2.resize(img,(1280,720))
     cv2.imshow('img',img)
 #    cv2.imshow('img',img_dilation)
